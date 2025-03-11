@@ -1,0 +1,1567 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the Skeptic Framework">
+      
+      
+        <meta name="author" content="KasCode">
+      
+      
+        <link rel="canonical" href="https://JKasCode.github.io/SkepticDocs/server/players/PlayerObject/">
+      
+      
+        <link rel="prev" href="../PlayerHandler/">
+      
+      
+        <link rel="next" href="../Players/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+    
+    
+      
+        <title>PlayerObject - Skeptic Framework</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#playerobject" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Skeptic Framework" class="md-header__button md-logo" aria-label="Skeptic Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Skeptic Framework
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PlayerObject
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="blue"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JKasCode/SkepticDocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JKasCode/SkepticDocs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Skeptic Framework" class="md-nav__button md-logo" aria-label="Skeptic Framework" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Skeptic Framework
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JKasCode/SkepticDocs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JKasCode/SkepticDocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Style/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Style
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Client
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Client
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/Interface/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/SkepticClient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SkepticClient
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Events
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Events
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/events/ClientEventWrapper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClientEventWrapper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/events/Events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/resources/Requester/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requester
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/resources/Resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../client/resources/Response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Server
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Server
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Feedback/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Feedback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../SkepticServer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SkepticServer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../VersionPage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Version
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Events
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Events
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/Events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/RemoteEventValidator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RemoteEventValidator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../events/RemoteEventWrapper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RemoteEventWrapper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Players
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Players
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PlayerHandler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PlayerHandler
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    PlayerObject
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    PlayerObject
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#player" class="md-nav__link">
+    <span class="md-ellipsis">
+      Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gethandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetHandler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tunnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      PushRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoclientloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToClientLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoleave" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToLeave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isserverloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsServerLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isclientloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsClientLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isingame" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsInGame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logcustomevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogCustomEvent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logonboardingfunnelstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogOnboardingFunnelStep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beginfunnelsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      BeginFunnelSession
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Players/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Players
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#properties" class="md-nav__link">
+    <span class="md-ellipsis">
+      Properties
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Properties">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#player" class="md-nav__link">
+    <span class="md-ellipsis">
+      Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gethandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetHandler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tunnel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tunnel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushrequest" class="md-nav__link">
+    <span class="md-ellipsis">
+      PushRequest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoclientloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToClientLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bindtoleave" class="md-nav__link">
+    <span class="md-ellipsis">
+      BindToLeave
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isserverloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsServerLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isclientloaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsClientLoaded
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isingame" class="md-nav__link">
+    <span class="md-ellipsis">
+      IsInGame
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      GetData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updatedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      UpdateData
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logcustomevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogCustomEvent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logonboardingfunnelstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogOnboardingFunnelStep
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beginfunnelsession" class="md-nav__link">
+    <span class="md-ellipsis">
+      BeginFunnelSession
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="playerobject">PlayerObject<a class="headerlink" href="#playerobject" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>A wrapper for the Player Instance, created automatically for each player in the server. This holds references to all <a href="../PlayerHandler/">PlayerHandlers</a> created for the player, as well as important methods to manage player data and more. This is a core component of the Skeptic Framework.</p>
+<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
+<h4 id="player">Player<a class="headerlink" href="#player" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">.</span><span class="py">Player</span><span class="p">:</span><span class="w"> </span><span class="py">Player</span>
+</code></pre></div>
+<p>{read-only}</p>
+<p>A reference to the Player.</p>
+<h4 id="profile">Profile<a class="headerlink" href="#profile" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">.</span><span class="py">Profile</span><span class="p">:</span><span class="w"> </span><span class="py">any</span>
+</code></pre></div>
+<p>A reference to the ProfileService Profile created for this player.</p>
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
+<h4 id="gethandler">GetHandler<a class="headerlink" href="#gethandler" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">GetHandler</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">handlerName</span><span class="p">:</span><span class="w"> </span><span class="py">string</span>
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">Skeptic</span><span class="p">.</span><span class="py">PlayerHandler</span>
+</code></pre></div>
+<p><em>See: <a href="../PlayerHandler/">PlayerHandler</a></em></p>
+<p>Returns a PlayerHandler by name, if it exists.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Some handlers will take time to load, and may not be immediately available. Please use <a href="#bindtoloaded"><code>:BindToLoaded</code></a> to guarantee that all handlers will be loaded.</p>
+</div>
+<h4 id="tunnel">Tunnel<a class="headerlink" href="#tunnel" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">Tunnel</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">handlerName</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">method</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="p">...:</span><span class="w"> </span><span class="nv">any</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Run a method in a handler. Will error if the handler does not exist yet. Generally, <code>:GetHandler</code> should be used in place of this.</p>
+<h4 id="pushrequest">PushRequest<a class="headerlink" href="#pushrequest" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">PushRequest</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">handler</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nv">Skeptic</span><span class="p">.</span><span class="py">PlayerHandler</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">alterCallback</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">any</span><span class="err">?</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><em>See: <a href="../../../client/resources/Resources/#requester">Requester</a></em></p>
+<p>Push a request from the given handler to the client. "alterCallback" accepts the value returned by <code>playerHandler:Request()</code>, and returns a new value to replace it. If "alterCallback" returns <code>nil</code>, then it is ignored and the original value will be returned anyway.</p>
+<h4 id="bindtoloaded">BindToLoaded<a class="headerlink" href="#bindtoloaded" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">BindToLoaded</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">fn</span><span class="p">:</span><span class="w"> </span><span class="err">()</span><span class="w"> </span><span class="err">-&gt;</span><span class="w"> </span><span class="err">()</span>
+<span class="err">)</span>
+</code></pre></div>
+<p>Bind a function to run when this PlayerObject finishes loading, and when <a href="#isserverloaded"><code>playerObject:IsServerLoaded()</code></a> returns true.</p>
+<h4 id="bindtoclientloaded">BindToClientLoaded<a class="headerlink" href="#bindtoclientloaded" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">BindToClientLoaded</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">fn</span><span class="p">:</span><span class="w"> </span><span class="err">()</span><span class="w"> </span><span class="err">-&gt;</span><span class="w"> </span><span class="err">()</span>
+<span class="err">)</span>
+</code></pre></div>
+<p>Bind a function to run when the client fires an event to indicate they mostly finished loading, and when <a href="#isclientloaded"><code>playerObject:IsClientLoaded()</code></a> returns true.</p>
+<h4 id="bindtoleave">BindToLeave<a class="headerlink" href="#bindtoleave" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">BindToLeave</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">fn</span><span class="p">:</span><span class="w"> </span><span class="err">()</span><span class="w"> </span><span class="err">-&gt;</span><span class="w"> </span><span class="err">()</span>
+<span class="err">)</span>
+</code></pre></div>
+<p>Bind a function to run when the player leaves the server. Functions bound here will run <em>after</em> their Profile is released (their data is unloaded), and <em>before</em> their PlayerHandlers are cleared.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Modifying data in a function passed to <code>:BindToLeave()</code> is not guaranteed to save the data. All data should be saved immediately as they are modified, and should not be applied before the player leaves.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The PlayerObject will run all functions bound here one-by-one until they are complete before clearing PlayerHandlers and removing the reference to the PlayerObject. Ensure that these binds do not error and yield for as little possible, if absolutely necessary.</p>
+</div>
+<h4 id="isserverloaded">IsServerLoaded<a class="headerlink" href="#isserverloaded" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">IsServerLoaded</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</code></pre></div>
+<p>Returns true when all their PlayerHandlers and the player's Profile are loaded.</p>
+<h4 id="isclientloaded">IsClientLoaded<a class="headerlink" href="#isclientloaded" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">IsClientLoaded</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</code></pre></div>
+<p>Returns true if the player has indicated with a RemoteEvent that they finished loading. This method is not guaranteed to accurately represent the client-side state.</p>
+<h4 id="isingame">IsInGame<a class="headerlink" href="#isingame" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">IsInGame</span><span class="p">()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">boolean</span>
+</code></pre></div>
+<p>Returns true if the player has not yet left the game. Will only return false after they left the game, regardless of if they're loaded in or not.</p>
+<h4 id="getdata">GetData<a class="headerlink" href="#getdata" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">GetData</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">key</span><span class="p">:</span><span class="w"> </span><span class="py">string</span>
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">any</span><span class="err">?</span>
+</code></pre></div>
+<p><em>See: <a href="../Players/#definedatatemplatekey">Skeptic.Players:DefineDataTemplateKey()</a></em></p>
+<p>Returns a deepcopy of the data stored in that key. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This method is guaranteed to return either the most recently saved value or the default value defined by <code>:DefineDataTemplateKey()</code>. </p>
+</div>
+<h4 id="updatedata">UpdateData<a class="headerlink" href="#updatedata" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">UpdateData</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">key</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">updateFn</span><span class="p">:</span><span class="w"> </span><span class="err">(</span><span class="py">any</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">(</span><span class="nv">any</span><span class="err">?</span><span class="p">)</span><span class="w"> </span>
+<span class="p">)</span>
+</code></pre></div>
+<p><em>See: <a href="../Players/#definedatatemplatekey">Skeptic.Players:DefineDataTemplateKey()</a></em></p>
+<p>Update a key in the players data. This method does not yield. </p>
+<p>"updateFn" accepts a deepcopy of the previously saved data as the only argument, and returns the new data to be saved in that key. If <code>nil</code> is returned, then the operation is cancelled and the data is unsaved.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can assume that data updated with this function will always save. With over 230 million total visits, we have yet to hear any reports of data loss.</p>
+</div>
+<h4 id="logcustomevent">LogCustomEvent<a class="headerlink" href="#logcustomevent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">LogCustomEvent</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">eventName</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">value</span><span class="p">:</span><span class="w"> </span><span class="py">number</span><span class="err">?</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">customFields</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="p">}</span><span class="err">?</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><em>See: <a href="../../Analytics/">Analytics</a></em></p>
+<h4 id="logonboardingfunnelstep">LogOnboardingFunnelStep<a class="headerlink" href="#logonboardingfunnelstep" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">LogOnboardingFunnelStep</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">stepId</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">customFields</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="err">[</span><span class="py">string</span><span class="p">]:</span><span class="w"> </span><span class="nv">any</span><span class="w"> </span><span class="p">}</span><span class="err">?</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><em>See: <a href="../../Analytics/">Analytics</a></em></p>
+<h4 id="beginfunnelsession">BeginFunnelSession<a class="headerlink" href="#beginfunnelsession" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">playerObject</span><span class="p">:</span><span class="nf">BeginFunnelSession</span><span class="p">(</span>
+<span class="w">    </span><span class="nv">funnelName</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">sessionId</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="err">?</span>
+<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">any</span>
+</code></pre></div>
+<p><em>See: <a href="../../Analytics/">Analytics</a></em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/tags.js"></script>
+      
+    
+  </body>
+</html>
