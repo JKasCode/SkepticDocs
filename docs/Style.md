@@ -55,10 +55,15 @@ end
 * Accessible references to objects that need to be accessed often are created– eg. all PlayerObjects are accessible with `:GetPlayerObject()` from anywhere
 * Minimally destructive `:Destroy()` methods are preferred, ie. calling `:Destroy()` on an object should not break code that will try to access it in the future unless it absolutely has to.
 * Generally, functions that wrap object constructors are used rather than allowing direct access to the base object.
-* Convenience can be worth it– clean code is a goal but if a clearly simple solution exists for a problem, then it is still a solution.
+* Historically, promises haven't been used in code with the framework, however this doesn't mean they are frowned upon. Newer work may use promises.
+* Maid/janitor classes historically haven't been used either. Connections are tracked on an individual basis, though this doesn't mean these classes are frowned upon either.
 * Using _G is seen as unreliable.
 
 
 And finally,
 
 * In Madworks we trust. 
+
+## Other notes
+
+Historically, source-control and tools such as Rojo have not been used in past projects, including Carry an Egg. The majority of our workflow has been within Roblox Studio besides certain external integrations, and with the new collaborative tools being released by Roblox, this hasn't been an issue so far. It has been a common practice to work on updates in a seperate development experience rather than the public experience, where updates are published to the public experience once they are tested and ready. This introduces pain points in the workflow, where if a hotfix is needed in the public experience while an update is in progress in the development experience, the changes required for the hotfix would need to be made in duplicate across both experiences.

@@ -2,7 +2,9 @@
 
 ## Overview
 
-The Skeptic Framework is a light-weight, player-centric framework built for games by [Skeptic Softworks](https://www.skepticsoftworks.com/). It was designed to allow easy access to important components from anywhere in the codebase at any time.
+The Skeptic Framework is a light-weight, player-centric framework built for games by [Skeptic Softworks](https://skepticsoftworks.com/). It was designed to allow easy access to important components from anywhere in the codebase at any time.
+
+Find out more about Skeptic Softworks at [skepticsoftworks.com](https://skepticsoftworks.com/).
 
 ``` lua
 local Skeptic = require(game:GetService("ServerScriptService").SkepticServer)
