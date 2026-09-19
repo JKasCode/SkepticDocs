@@ -6,8 +6,8 @@ const style = `.tag {
     color: #ffffff;
     line-height: .8rem;
     padding: 5px;
-    margin-left: 7px !important;
-    margin: 0 !important; 
+    margin: 0 !important;
+    vertical-align: baseline;
     background-clip: padding-box;
     border-radius: 3px;
     display: inline-block;
@@ -39,37 +39,83 @@ const style = `.tag {
 .deprecated {
     background-color: rgb(227, 87, 75);
 }
+.version4 {
+    background-color: rgb(78, 141, 82);
+}
+.version3 {
+    background-color: rgb(198, 127, 55);
+}
 h4 {
     display: inline;
 }`
 
-var replaceStuff = [
-	["{read-only}", '<p class="tag read-only">read-only</p>'],
-	["{static}", '<p class="tag static">static</p>'],
-	["{server-only}", '<p class="tag server-only">server-only</p>'],
-	["{client-only}", '<p class="tag client-only">client-only</p>'],
-	["{deprecated}", '<p class="tag deprecated">deprecated</p>'],
-	["{chainable}", '<p class="tag chainable">chainable</p>'],
-	["{unstable}", '<p class="tag unstable">unstable</p>'],
-	["{toggleable}", '<p class="tag toggleable">toggleable</p>'],
-];
-
-function replace(element, from, to) {
-	if (element.childNodes.length) {
-		element.childNodes.forEach(child => replace(child, from, to));
-	} else {
-		const cont = element.textContent;
-		if (cont && cont.includes(from)) {
-			var newElement = document.createElement("p");
-			element.parentNode.replaceWith(newElement);
-			newElement.outerHTML = to;
-		}
-	}
+// token -> [css class, label]
+var replaceStuff = {
+	"{read-only}": ["read-only", "read-only"],
+	"{static}": ["static", "static"],
+	"{server-only}": ["server-only", "server-only"],
+	"{client-only}": ["client-only", "client-only"],
+	"{deprecated}": ["deprecated", "deprecated"],
+	"{chainable}": ["chainable", "chainable"],
+	"{unstable}": ["unstable", "unstable"],
+	"{toggleable}": ["toggleable", "toggleable"],
+	"{version4}": ["version4", "only in V4+"],
+	"{version3}": ["version3", "only in V3+"],
 };
 
-for (var i = 0; i < replaceStuff.length; i++) {
-	replace(document.body, replaceStuff[i][0], replaceStuff[i][1]);
+// Tokens are matched inside text, so don't touch code samples
+const skipElements = ["CODE", "PRE", "SCRIPT", "STYLE", "TEXTAREA"];
+const tagPattern = new RegExp(
+	Object.keys(replaceStuff).map(token => token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"),
+	"g"
+);
+
+function buildTag(token) {
+	const [className, label] = replaceStuff[token];
+	const element = document.createElement("span");
+	element.className = "tag " + className;
+	element.textContent = label;
+	return element;
 }
+
+// Swaps every token in a text node for its tag, keeping the surrounding text
+function replaceInText(node) {
+	const text = node.textContent;
+	tagPattern.lastIndex = 0;
+	if (!text || !tagPattern.test(text)) return;
+
+	const fragment = document.createDocumentFragment();
+	var cursor = 0;
+	var match;
+
+	tagPattern.lastIndex = 0;
+	while ((match = tagPattern.exec(text)) !== null) {
+		if (match.index > cursor) {
+			fragment.appendChild(document.createTextNode(text.slice(cursor, match.index)));
+		}
+		fragment.appendChild(buildTag(match[0]));
+		cursor = match.index + match[0].length;
+	}
+	if (cursor < text.length) {
+		fragment.appendChild(document.createTextNode(text.slice(cursor)));
+	}
+
+	node.replaceWith(fragment);
+};
+
+function replace(element) {
+	if (skipElements.includes(element.tagName)) return;
+	// childNodes is live and we swap nodes out as we go, so walk a copy
+	Array.from(element.childNodes).forEach(child => {
+		if (child.nodeType === Node.TEXT_NODE) {
+			replaceInText(child);
+		} else if (child.nodeType === Node.ELEMENT_NODE) {
+			replace(child);
+		}
+	});
+};
+
+replace(document.body);
 
 const styleElement = document.createElement("style")
 styleElement.innerHTML = style

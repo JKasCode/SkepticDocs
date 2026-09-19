@@ -12,13 +12,13 @@
         <meta name="author" content="KasCode">
       
       
-        <link rel="canonical" href="https://JKasCode.github.io/SkepticDocs/server/events/RemoteEventValidator/">
+        <link rel="canonical" href="https://JKasCode.github.io/SkepticDocs/client/events/PacketEventWrapper/">
       
       
-        <link rel="prev" href="../PacketEventWrapper/">
+        <link rel="prev" href="../Events/">
       
       
-        <link rel="next" href="../RemoteEventWrapper/">
+        <link rel="next" href="../../resources/Requester/">
       
       
       <link rel="icon" href="../../../assets/favicon.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>RemoteEventValidator - Skeptic Framework</title>
+        <title>PacketEventWrapper (Client) - Skeptic Framework</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#remoteeventvalidator" class="md-skip">
+        <a href="#packeteventwrapper-client" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RemoteEventValidator
+              PacketEventWrapper (Client)
             
           </span>
         </div>
@@ -299,18 +299,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -326,7 +328,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Client
@@ -340,7 +342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/Interface/" class="md-nav__link">
+      <a href="../../Interface/" class="md-nav__link">
         
   
   
@@ -363,7 +365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/SkepticClient/" class="md-nav__link">
+      <a href="../../SkepticClient/" class="md-nav__link">
         
   
   
@@ -383,18 +385,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -410,7 +414,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Events
@@ -424,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/events/ClientEventWrapper/" class="md-nav__link">
+      <a href="../ClientEventWrapper/" class="md-nav__link">
         
   
   
@@ -447,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/events/Events/" class="md-nav__link">
+      <a href="../Events/" class="md-nav__link">
         
   
   
@@ -467,10 +471,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../client/events/PacketEventWrapper/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    PacketEventWrapper (Client)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -481,6 +507,83 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Events
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onclientevent" class="md-nav__link">
+    <span class="md-ellipsis">
+      OnClientEvent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fireserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      FireServer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -539,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/resources/Requester/" class="md-nav__link">
+      <a href="../../resources/Requester/" class="md-nav__link">
         
   
   
@@ -562,7 +665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/resources/Resources/" class="md-nav__link">
+      <a href="../../resources/Resources/" class="md-nav__link">
         
   
   
@@ -585,7 +688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../client/resources/Response/" class="md-nav__link">
+      <a href="../../resources/Response/" class="md-nav__link">
         
   
   
@@ -620,20 +723,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -649,7 +750,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Server
@@ -663,7 +764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Analytics/" class="md-nav__link">
+      <a href="../../../server/Analytics/" class="md-nav__link">
         
   
   
@@ -686,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Feedback/" class="md-nav__link">
+      <a href="../../../server/Feedback/" class="md-nav__link">
         
   
   
@@ -709,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../SkepticServer/" class="md-nav__link">
+      <a href="../../../server/SkepticServer/" class="md-nav__link">
         
   
   
@@ -732,7 +833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../VersionPage/" class="md-nav__link">
+      <a href="../../../server/VersionPage/" class="md-nav__link">
         
   
   
@@ -752,20 +853,18 @@
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
         
           
           <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -781,7 +880,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_5">
             <span class="md-nav__icon md-icon"></span>
             Events
@@ -795,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Events/" class="md-nav__link">
+      <a href="../../../server/events/Events/" class="md-nav__link">
         
   
   
@@ -818,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../PacketEventWrapper/" class="md-nav__link">
+      <a href="../../../server/events/PacketEventWrapper/" class="md-nav__link">
         
   
   
@@ -838,32 +937,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    RemoteEventValidator
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../server/events/RemoteEventValidator/" class="md-nav__link">
         
   
   
@@ -874,116 +951,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#events" class="md-nav__link">
-    <span class="md-ellipsis">
-      Events
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Events">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#servereventblocked" class="md-nav__link">
-    <span class="md-ellipsis">
-      ServerEventBlocked
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#argumentfilter" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgumentFilter
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      Methods
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#validatearguments" class="md-nav__link">
-    <span class="md-ellipsis">
-      ValidateArguments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -996,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../RemoteEventWrapper/" class="md-nav__link">
+      <a href="../../../server/events/RemoteEventWrapper/" class="md-nav__link">
         
   
   
@@ -1065,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../players/PlayerHandler/" class="md-nav__link">
+      <a href="../../../server/players/PlayerHandler/" class="md-nav__link">
         
   
   
@@ -1088,7 +1055,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../players/PlayerObject/" class="md-nav__link">
+      <a href="../../../server/players/PlayerObject/" class="md-nav__link">
         
   
   
@@ -1111,7 +1078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../players/Players/" class="md-nav__link">
+      <a href="../../../server/players/Players/" class="md-nav__link">
         
   
   
@@ -1188,33 +1155,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#servereventblocked" class="md-nav__link">
+  <a href="#onclientevent" class="md-nav__link">
     <span class="md-ellipsis">
-      ServerEventBlocked
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Properties">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#argumentfilter" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgumentFilter
+      OnClientEvent
     </span>
   </a>
   
@@ -1236,18 +1179,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#validatearguments" class="md-nav__link">
+  <a href="#fireserver" class="md-nav__link">
     <span class="md-ellipsis">
-      ValidateArguments
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#destroy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Destroy
+      FireServer
     </span>
   </a>
   
@@ -1277,44 +1211,30 @@
   
 
 
-<h1 id="remoteeventvalidator">RemoteEventValidator<a class="headerlink" href="#remoteeventvalidator" title="Permanent link">&para;</a></h1>
+<h1 id="packeteventwrapper-client">PacketEventWrapper (Client)<a class="headerlink" href="#packeteventwrapper-client" title="Permanent link">&para;</a></h1>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This object checks the arguments of every event received on any RemoteEventWrappers that it is attached to, and blocks the event from firing <code>.OnServerEvent</code> in the case that one of the arguments don't pass. A single RemoteEventValidator can be used with multiple RemoteEventWrappers.</p>
+<p>{version4}</p>
+<p>This object is a wrapper for Packet events. Packet methods and properties can be found here: <a href="https://devforum.roblox.com/t/packet-networking-library/3573907">Packet Networking Library</a>. Basic events and methods are included in this documentation for convenience.</p>
+<p>The client-side wrapper does not change any method/properties from the original besides disabling server-side methods. Server-side methods and properties of Packet (eg. <code>OnServerEvent</code>, <code>FireClient</code>) will error when called from the client.</p>
+<p><em>See: <a href="../../../server/events/PacketEventWrapper/">Server-side PacketEventWrapper</a></em></p>
 <h2 id="events">Events<a class="headerlink" href="#events" title="Permanent link">&para;</a></h2>
-<h4 id="servereventblocked">ServerEventBlocked<a class="headerlink" href="#servereventblocked" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nv">validator</span><span class="p">.</span><span class="py">ServerEventBlocked</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span>
-<span class="w">    </span><span class="nv">eventWrapper</span><span class="p">:</span><span class="w"> </span><span class="py">Skeptic</span><span class="p">.</span><span class="py">Events</span><span class="p">.</span><span class="py">RemoteEventWrapper</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">playerObject</span><span class="p">:</span><span class="w"> </span><span class="py">Skeptic</span><span class="p">.</span><span class="py">PlayerObject</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">reason</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">blockedArgument</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="err">?</span>
+<h4 id="onclientevent">OnClientEvent<a class="headerlink" href="#onclientevent" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">event</span><span class="p">.</span><span class="py">OnClientEvent</span><span class="p">:</span><span class="nf">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span>
+<span class="w">    </span><span class="p">...:</span><span class="w"> </span><span class="nv">any</span>
 <span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="kr">end</span><span class="p">)</span>
 </code></pre></div>
-<p><em>See: <a href="../RemoteEventWrapper/">RemoteEventWrapper</a></em></p>
-<p>Fires whenever any RemoteEventWrapper using this RemoteEventValidator is blocked by the validator.</p>
-<h2 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h2>
-<h4 id="argumentfilter">ArgumentFilter<a class="headerlink" href="#argumentfilter" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nv">validator</span><span class="p">.</span><span class="py">ArgumentFilter</span><span class="p">:</span><span class="w"> </span><span class="py">ArgumentFilter</span>
-</code></pre></div>
-<p><em>See: <a href="../Events/#argumentfilter">ArgumentFilter</a></em></p>
-<p>Refers to the ArgumentFilter table being used by this validator. Can be changed at any time to another valid ArgumentFilter. This should never be nil.</p>
+<p>Fires when <a href="../../../server/events/PacketEventWrapper/#fireclient"><code>:Fire*</code></a> is called on the server.</p>
 <h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h2>
-<h4 id="validatearguments">ValidateArguments<a class="headerlink" href="#validatearguments" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nv">validator</span><span class="p">:</span><span class="nf">ValidateArguments</span><span class="p">(</span>
-<span class="w">    </span><span class="nv">eventWrapper</span><span class="p">:</span><span class="w"> </span><span class="py">Skeptic</span><span class="p">.</span><span class="py">Events</span><span class="p">.</span><span class="py">RemoteEventWrapper</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">playerObject</span><span class="p">:</span><span class="w"> </span><span class="py">Skeptic</span><span class="p">.</span><span class="py">PlayerObject</span><span class="p">,</span>
+<h4 id="fireserver">FireServer<a class="headerlink" href="#fireserver" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nv">event</span><span class="p">:</span><span class="nf">FireServer</span><span class="p">(</span>
 <span class="w">    </span><span class="p">...:</span><span class="w"> </span><span class="nv">any</span>
-<span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">pass</span><span class="p">:</span><span class="w"> </span><span class="py">boolean</span><span class="p">,</span><span class="w"> </span><span class="nv">reason</span><span class="p">:</span><span class="w"> </span><span class="py">string</span><span class="err">?</span><span class="p">,</span><span class="w"> </span><span class="nv">blockedArgument</span><span class="p">:</span><span class="w"> </span><span class="py">any</span><span class="err">?</span>
+<span class="p">)</span>
 </code></pre></div>
-<p><em>See: <a href="../RemoteEventWrapper/">RemoteEventWrapper</a></em></p>
-<p>Manually validate the arguments passed in an event from a player. "pass" will be <code>false</code> if at least one of the arguments don't pass. "reason" will be a short message specifying why the first invalid argument was blocked, and "blockedArgument" will be the value of the invalid argument. "reason" and "blockedArgument" are nil if "pass" is <code>true</code>.</p>
+<p>Fire an event to the server.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>This is already done automatically by RemoteEventWrappers with a validator attached to them with <a href="../RemoteEventWrapper/#setvalidator">:SetValidator</a>.</p>
+<p>The <code>FireServer()</code> method is simply an alias for the <code>Fire()</code> method for parity with the Roblox event ecosystem. Both methods work identically.</p>
 </div>
-<h4 id="destroy">Destroy<a class="headerlink" href="#destroy" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nv">validator</span><span class="p">:</span><span class="nf">Destroy</span><span class="p">()</span>
-</code></pre></div>
-<p>Destroys the RemoteEventValidator and disconnects connections. RemoteEventWrappers with this validator will no longer be blocked after this is called.</p>
 
 
 
