@@ -1,3 +1,4 @@
 venv/
+mkdocs_env/
 site/
 .DS_STORE

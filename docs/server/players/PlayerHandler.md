@@ -82,15 +82,22 @@ In the example above, as soon as the "onPlayerAdded" function returns the "Playe
 playerHandler.Name: string
 ```
 
+{read-only}
+
 #### Player
 ```lua
 playerHandler.Player: Player
 ```
 
+{read-only}
+
 #### PlayerObject
 ```lua
 playerHandler.PlayerObject: Skeptic.PlayerObject
 ```
+
+{read-only}
+
 _See: [PlayerObject]_
 
 ## Methods

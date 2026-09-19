@@ -11,15 +11,20 @@ The Player module contains methods to access PlayerObjects and access or define 
 
 #### PlayerProfileStore
 ``` lua
-Skeptic.Players.PlayerProfileStore: any
+Skeptic.Players.PlayerProfileStore: any?
 ```
 
-A reference to the ProfileStore created for player data managed by the framework.
+{read-only}
+
+A reference to the ProfileStore created for player data managed by the framework. Will be `nil` until [:LockDataTemplate()](#lockdatatemplate) is called.
+
 
 #### ProfileService
 ``` lua
 Skeptic.Players.ProfileService: any
 ```
+
+{read-only}
 
 A reference to the framework's version of [ProfileService](https://madstudioroblox.github.io/ProfileService/). ProfileService is a player data management module created by Mad Studio.
 
@@ -96,7 +101,7 @@ Skeptic.Players:AddPlayerHandler(
 
 _See: [PlayerHandler], [Creating a PlayerHandler](PlayerHandler.md#creating-a-playerhandler)_
 
-Defines a function to create a PlayerHandler with the given name. Calling [`playerObject:GetHandler(name)`](PlayerObject.md#gethandler)) will return the result of the "onPlayerAdded" function, initialized with the default properties of PlayerHandlers. 
+Defines a function to create a PlayerHandler with the given name. Calling [playerObject:GetHandler(name)](PlayerObject.md#gethandler) will return the result of the "onPlayerAdded" function, initialized with the default properties of PlayerHandlers. 
 
 #### AddPlayerHandlerPreInitialized
 ```lua
@@ -105,6 +110,8 @@ Skeptic.Players:AddPlayerHandlerPreInitialized(
     onPlayerAdded: (baseHandler: Skeptic.PlayerHandler) -> ({ any })
 )
 ```
+
+{deprecated}
 
 Defines a function to create a PlayerHandler with the given name. Rather than passing the PlayerObject, this passes an initialized PlayerHandler object to be modified.
 

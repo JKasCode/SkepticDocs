@@ -1,5 +1,6 @@
 [RemoteEventWrapper]: RemoteEventWrapper.md
 [RemoteEventValidator]: RemoteEventValidator.md
+[PacketEventWrapper]: PacketEventWrapper.md
 
 # Events
 
@@ -37,6 +38,17 @@ The ArgumentFilter type is a table of tables, where each item in the table repre
 
 "Type" can be a type name (eg. `"string"`) or `"any"` in order to accept anything except for `nil`. <br>"Callback" can be a callback function that returns `true` if the received argument is accepted.
 
+## Properties
+
+#### Packet
+```lua
+Skeptic.Events.Packet: Packet
+```
+
+{version4}
+
+A reference to [Packet](https://devforum.roblox.com/t/packet-networking-library/3573907) used by the Skeptic Framework.
+
 ## Methods
 
 #### GetEvent
@@ -60,6 +72,22 @@ Skeptic.Events:GetEventIfExists(
 _See: [RemoteEventWrapper]_
 
 Returns the RemoteEventWrapper by name, but returns `nil` if one with that name has not been created yet.
+
+#### GetPacketEvent
+```lua
+Skeptic.Events:GetPacketEvent<A..., B...>(
+    name: string, ...: A...
+) -> Skeptic.Events.PacketEventWrapper<A..., B...>
+```
+
+{version4}
+
+_See: [PacketEventWrapper]_
+
+Returns a wrapper for a Packet. See [Packet Networking Library](https://devforum.roblox.com/t/packet-networking-library/3573907) by @5uphi.
+
+!!! info
+    For events that are fired extremely rapidly (like gun bullets, or updating a CFrame from the client to all other clients), Packets use significantly less data over the network. 
 
 #### DestroyEvent
 ```lua

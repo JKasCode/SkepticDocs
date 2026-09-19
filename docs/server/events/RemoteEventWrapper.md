@@ -29,7 +29,17 @@ event.ServerEventBlocked:Connect(function(
 
 _See: [RemoteEventValidator]_
 
-Fires when an event is blocked by the RemoteEventValidator. 
+Fires when this event is blocked by the RemoteEventValidator. 
+
+#### ServerEventRateLimited
+```lua
+event.ServerEventRateLimited:Connect(function(
+    playerObject: Skeptic.PlayerObject,
+    message: string
+) ... end)
+```
+
+Fires when this event is ratelimited.
 
 ## Properties
 
@@ -99,3 +109,12 @@ event:SetValidator(
 _See: [RemoteEventValidator]_
 
 Assign a RemoteEventValidator to this event. Any arguments from an event that do not pass the validator will cause that event to be blocked. In this case, [ServerEventBlocked](#servereventblocked) will fire.
+
+#### SetRateLimit
+```lua
+event:SetRateLimit(
+    rateLimit: number?
+)
+```
+
+Set a ratelimit for this event ("rateLimit" is given in Hz). Ratelimiting is tracked and applied each second per player. The default ratelimit for all events is 65 Hz. Set "rateLimit" to nil to remove any ratelimits.

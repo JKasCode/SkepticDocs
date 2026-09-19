@@ -29,10 +29,13 @@ Returns the version of the experience in this server. This will either be the sa
 
 #### GetExperienceVersion
 ```lua
-Skeptic.Version:GetExperienceVersion() -> string
+Skeptic.Version:GetExperienceVersion() -> string -- In V3 
+Skeptic.Version:GetExperienceVersion() -> (string, {[number]: string}) -- in V4 and above
 ```
 
-Returns the experience-wide version. This will only be up-to-date when the server starts up. Use [`:UpdateValuesAsync`](#updatevaluesasync) to get the latest version data from the DataStore.
+{version3} Returns the experience-wide version. This will only be up-to-date when the server starts up. Use [`:UpdateValuesAsync`](#updatevaluesasync) to get the latest version data from the DataStore.
+
+{version4} In V4 and above, also returns a table of versions of all places in the experiences. The key is the place ID (as a number), and the value is the version tag (as a string).
 
 #### UpdateValuesAsync
 ```lua

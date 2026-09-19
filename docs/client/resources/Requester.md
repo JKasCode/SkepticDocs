@@ -8,7 +8,7 @@ The Requester object is used to listen to and ask for requests from PlayerHandle
 * Calling `#!lua requester:Request()` from the client (_See: [`:Request()`](#request)_)
 * Calling `#!lua Skeptic.Resources:RequestAsync(someHandler)` (_See: [`:RequestAsync`](Resources.md#requestasync)_)
 
-When a request is triggered, the PlayerObject calls the [`:Request()`](../../server/players/PlayerHandler.md#request) on the specified [PlayerHandler](../../server/players/PlayerHandler.md), which will return some data. This data is then sent to the client and received through functions bound to [`requester:Listen()`](#listen).
+When a request is triggered, the PlayerObject calls the [`:Request()`](../../server/players/PlayerHandler.md#request) method on the specified [PlayerHandler](../../server/players/PlayerHandler.md), which will return some data. This data is then sent to the client and received through functions bound to [`requester:Listen()`](#listen).
 
 ## Constructors
 
@@ -30,7 +30,7 @@ Creates a Requester for the given PlayerHandler.<br>If "limit" is true, then onl
 requester.Handler: string
 ```
 
-{read-only}
+{read-only} 
 
 The name of the PlayerHandler that this Requester is listening to.
 

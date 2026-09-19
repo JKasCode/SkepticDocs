@@ -6,6 +6,16 @@ The Skeptic Framework is a light-weight, player-centric framework built for game
 
 Find out more about Skeptic Softworks at [skepticsoftworks.com](https://skepticsoftworks.com/).
 
+## Important note about version
+
+All documentation is relevant to the Skeptic Framework V3 and above. Since then, V4 has been released and is mostly backwards-compatible. 
+
+You can assume all documentation is relevant for V3 and above, except for documentation explicitly tagged as {version4}.
+
+This documentation may not be accurate for V1 and V2, which are legacy versions of the framework.
+
+## Example
+
 ``` lua
 local Skeptic = require(game:GetService("ServerScriptService").SkepticServer)
 
@@ -29,7 +39,3 @@ AnswerEvent.OnServerEvent:Connect(function(playerObject, answer)
     end
 end)
 ```
-
-## Notes
-
-This documentation is relevant for Skeptic Framework V3+. Certain places use Skeptic Framework V2 or V1, which contain different methods and behavior than the ones outlines in this documentation.

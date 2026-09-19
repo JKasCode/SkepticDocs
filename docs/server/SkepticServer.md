@@ -2,7 +2,7 @@
 
 ## Overview
 
-The client-side version of the Skeptic Framework. This is the only ModuleScript that needs to be required from anywhere to access the Skeptic Framework on the client.
+The server-side version of the Skeptic Framework. This is the only ModuleScript that needs to be required from anywhere to access the Skeptic Framework on the server.
 
 ```lua title="Accessing SkepticServer"
 local Skeptic = require(game:GetService("ServerScriptService").SkepticServer)

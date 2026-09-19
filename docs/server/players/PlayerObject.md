@@ -22,7 +22,9 @@ A reference to the Player.
 playerObject.Profile: any
 ```
 
-A reference to the ProfileService Profile created for this player.
+{read-only}
+
+A reference to the [ProfileService](https://madstudioroblox.github.io/ProfileService/) Profile created for this player.
 
 ## Methods
 
@@ -146,7 +148,7 @@ Update a key in the players data. This method does not yield.
 "updateFn" accepts a deepcopy of the previously saved data as the only argument, and returns the new data to be saved in that key. If `nil` is returned, then the operation is cancelled and the data is unsaved.
 
 !!! info
-    You can assume that data updated with this function will always save. With over 230 million total visits, we have yet to hear any reports of data loss.
+    You can assume that data updated with this function will always save. The Skeptic Framework uses [ProfileService](https://madstudioroblox.github.io/ProfileService/) behind the scenes, and we have yet to receive a report for data loss.
 
 #### LogCustomEvent
 ```lua

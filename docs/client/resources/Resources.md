@@ -72,7 +72,7 @@ Skeptic.Resources:RequestAsync(
 ) -> any?
 ```
 
-Asynchronously trigger a request for any PlayerHandler on the server. 
+Asynchronously trigger a request for any PlayerHandler on the server, returning the value of the request (if it exists). In general, using a [Requester](Requester.md) is more reliable and cleaner as it already accounts for failure cases before returning a value.
 
 !!! warning
     The "targets" argument should not be used for newer work, and should be left as `nil`.

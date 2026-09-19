@@ -63,6 +63,9 @@ Skeptic:RegisterClientModules(
 
 Register a reference to the location with the majority of modules used on the client-side. Will error if client modules have already been registered.
 
+!!! warning
+    Using `Skeptic.ClientModules` to access modules in StarterPlayerScripts is unreliable and has the side effect of losing any type information from those modules. For future projects, place client-side modules in ReplicatedStorage to be accessed instead.
+
 #### UpdateServerLoadStatus
 ```lua
 Skeptic:UpdateServerLoadStatus(
